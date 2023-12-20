@@ -1,9 +1,12 @@
+import { Outlet } from "react-router-dom";
+import NavBar from "../Components/Shared/NavBar/NavBar";
 
 
 const MainLayout = () => {
 return(
    <div>
-       <p> HELLO I Am MainLayout </p>
+        <NavBar />
+        <Outlet/>
    </div>
 )}
 export default MainLayout;
