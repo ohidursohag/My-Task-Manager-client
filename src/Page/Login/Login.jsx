@@ -40,7 +40,7 @@ const Login = () => {
          const accessToken = await getAccessToken(user?.email)
          if (accessToken?.success) {
             toast.success('Successfully Logged In', { id: toastId })
-            navigate(loc?.state ? loc.state : '/', { replace: true })
+            navigate(loc?.state ? loc.state : '/dashboard', { replace: true })
          } else {
             logOut()
          }
@@ -59,7 +59,7 @@ const Login = () => {
             const data = await saveUserData(user)
             console.log(data);
             toast.success('Successfully Logged In', { id: toastId })
-            navigate(loc?.state ? loc.state : '/', { replace: true })
+            navigate(loc?.state ? loc.state : '/dashboard', { replace: true })
 
          } else {
             logOut()
