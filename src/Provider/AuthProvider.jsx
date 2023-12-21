@@ -12,8 +12,8 @@ import {
 } from 'firebase/auth'
 import PropTypes from 'prop-types';
 
-// import { clearCookie } from '../Api/Auth';
 import auth from '../config/firebase.config';
+import { clearCookie } from '../Api/Auth';
 
 export const AuthContext = createContext(null)
 
@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = async () => {
     setLoading(true)
-    // await clearCookie()
+    await clearCookie()
     return signOut(auth)
   }
 

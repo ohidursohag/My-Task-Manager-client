@@ -1,13 +1,12 @@
 import axiosSecure from "./axiosSecure";
 
 // Save User Data in Database
-export const saveUserData = async (user, userRole,phone) => {
+export const saveUserData = async (user) => {
    const currentUserData = {
       name: user?.displayName,
       image: user?.photoURL,
       email: user?.email,
-      phoneNumber: phone,
-      role: userRole,
+      role: 'user',
       status: 'varified'
    }
    const { data } = await axiosSecure.put(`/create-or-update-user/${user?.email}`, currentUserData);

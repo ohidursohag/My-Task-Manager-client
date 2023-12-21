@@ -56,7 +56,7 @@ const Login = () => {
          const { user } = await signInWithGoogle();
          const accessToken = await getAccessToken(user?.email)
          if (user?.email && accessToken?.success) {
-            const data = await saveUserData(user, 'user')
+            const data = await saveUserData(user)
             console.log(data);
             toast.success('Successfully Logged In', { id: toastId })
             navigate(loc?.state ? loc.state : '/', { replace: true })

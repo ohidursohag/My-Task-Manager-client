@@ -4,8 +4,8 @@ import NavLinks from "./NavLinks";
 
 const NavBar = () => {
 return(
-   <div>
-      <div className="container mx-auto flex justify-between items-center">
+   <div className="fixed w-full py-2">
+      <div className="container mx-auto flex justify-between items-center px-2">
          <Logo />
          <div className="flex items-center gap-10 text-lg font-bold">
             <NavLinks />

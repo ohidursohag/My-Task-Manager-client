@@ -28,10 +28,7 @@ const Register = () => {
       const name = data?.name;
       const email = data?.email;
       const password = data?.password;
-      const userRole = data?.userRole;
       const captchaInput = data?.captchaInput;
-      const phone = data?.phone;
-      console.log(phone);
       if (!validateCaptcha(captchaInput)) {
          toast.error('Invalid Captcha,Please try again', { id: toastId });
          return;
@@ -44,12 +41,12 @@ const Register = () => {
          const image = imageUploadResponse?.data?.url;
          console.log(imageUploadResponse, image);
          //3. Save username & profile photo
-         await updateUserProfile({ name, image, phone })
+         await updateUserProfile({ name, image })
          const accessToken = await getAccessToken(user?.email)
 
          if (accessToken?.success) {
             // save/update user info to database
-            const data = await saveUserData(user, userRole, phone)
+            const data = await saveUserData(user)
             console.log(data);
             toast.success('Registration Successfull and Logged In', { id: toastId })
             navigate(loc?.state ? loc.state : '/', { replace: true })
@@ -71,7 +68,7 @@ const Register = () => {
          // get AccessToken 
          const accessToken = await getAccessToken(user?.email)
          if (accessToken?.success) {
-            const data = await saveUserData(user, 'user')
+            const data = await saveUserData(user)
             console.log(data);
             toast.success('Successfully Registered', { id: toastId })
             navigate(loc?.state ? loc.state : '/', { replace: true })
