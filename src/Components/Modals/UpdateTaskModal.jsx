@@ -7,6 +7,7 @@ import { GiCancel } from "react-icons/gi";
 import moment from 'moment';
 import Swal from "sweetalert2";
 import useUpdateTaskData from "../../Hooks/useUpdateTaskData";
+import toast from "react-hot-toast";
 
 
 const UpdateTaskModal = ({ isShowModal, setIsShowModal, currentTaskData }) => {
@@ -49,7 +50,7 @@ const UpdateTaskModal = ({ isShowModal, setIsShowModal, currentTaskData }) => {
             const id= currentTaskData?._id
             console.log(id,updatedTaskData);
             updateTask({ id, updatedTaskData })
-            
+            toast.success('Task SuccessFully Updated')
          }
       })
    }

@@ -12,7 +12,7 @@ const useUpdateTaskData = () => {
          return updateResponse
       },
       onSuccess: () => {
-         toast.success('Task SuccessFully Updated')
+         // toast.success('Task SuccessFully Updated')
          queryClient.invalidateQueries({ queryKey: ["user_Tasks"] });
       },
       throwOnError : () => {

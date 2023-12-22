@@ -10,11 +10,20 @@ import Swal from 'sweetalert2';
 import axiosSecure from '../../../Api/axiosSecure';
 import { useState } from 'react';
 import UpdateTaskModal from '../../Modals/updateTaskModal';
+import moment from 'moment';
+import { RiTimerFill } from "react-icons/ri";
+import useUpdateTaskData from '../../../Hooks/useUpdateTaskData';
 
 const TaskDisplayCard = ({ task }) => {
+    console.log(task);
     const [isShowModal, setIsShowModal] = useState(false);
     const [currentTaskData, setCurrentTaskData] = useState({})
+    const { updateTask } = useUpdateTaskData()
     const queryClient = useQueryClient()
+   const startDate = moment(task?.taskStartDate).format('MMM Do hh:mm a')
+   const dedlineDate = moment(task?.taskDeadline).format('MMM Do hh:mm a')
+   const dedline = startDate + ' - ' + dedlineDate
+    console.log(dedline);
     const { mutate: deleteTask } = useMutation({
         mutationKey: ['userTasks'],
         mutationFn: (id) => {
@@ -46,8 +55,15 @@ const TaskDisplayCard = ({ task }) => {
             }
         })
     }
+    const handleStartTask = (id) => {
+        const updatedTaskData = {
+            taskStatus: `${ task?.taskStatus === 'to-do' ? 'ongoing' : task?.taskStatus === 'ongoing' ? 'completed' : 'completed'}`
+        }
+        console.log(updatedTaskData);
+        updateTask({ id, updatedTaskData })
+    }
     return (
-        <div className="shadow-[rgba(50,50,93,0.25)_0px_50px_100px_-20px,rgba(0,0,0,0.3)_0px_30px_60px_-30px,rgba(10,37,64,0.35)_0px_-2px_6px_0px] p-5 mb-5 rounded-lg">
+        <div className="shadow-[rgba(50,50,93,0.25)_0px_50px_100px_-20px,rgba(0,0,0,0.3)_0px_30px_60px_-30px,rgba(10,37,64,0.35)_0px_-2px_6px_0px] p-5 mb-5 rounded-lg flex flex-col">
             <div className="grid grid-cols-5 my-3 gap-5">
                 <div className="flex  items-center justify-start gap-2 col-span-4">
                     <span>
@@ -64,7 +80,25 @@ const TaskDisplayCard = ({ task }) => {
                     <button onClick={() => handleRemoveTask(task?._id)}><MdDelete size={35} className="text-error" /></button>
                 </div>
             </div>
-            <div className="text-neutral text-justify">{task?.taskDescription}</div>
+           
+            <div className="text-neutral text-justify flex-1">{task?.taskDescription}</div>
+            <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-2 text-warning font-bold my-2'>
+                    <span><RiTimerFill size={25}/></span>
+                    <span>DeadLine: </span>
+                </div>
+                <div className='text-sm text-neutral'>{dedline}</div>
+            </div>
+            <div className='flex justify-between items-center'>
+                <div className={`border-2 w-max px-2  py-1 font-bold rounded-lg ${task?.taskStatus === 'to-do' ? 'text-warning border-warning' : task?.taskStatus === 'ongoing' ? 'text-primary border-primary' : 'text-secondary border-secondary'}`}> {task?.taskPriority}</div>
+                
+                <button
+                    onClick={() => handleStartTask(task?._id)}
+                    disabled={task?.taskStatus === 'completed'}
+                    className={` w-max px-3  py-2 font-bold rounded-lg ${task?.taskStatus === 'to-do' ? 'text-white bg-warning' : task?.taskStatus === 'ongoing' ? 'text-white bg-primary' : 'text-white bg-secondary cursor-not-allowed'}`}>
+                    {task?.taskStatus === 'to-do' ? 'Start Task' : task?.taskStatus === 'ongoing' ? 'Complete Task' : 'Completed'}
+                </button>
+            </div>
             <UpdateTaskModal
                 isShowModal={isShowModal}
                 setIsShowModal={setIsShowModal}

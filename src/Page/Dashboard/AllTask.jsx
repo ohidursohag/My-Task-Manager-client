@@ -1,3 +1,5 @@
+import CompletedTaskSection from "../../Components/Shared/TaskCategorySection/CompletedTaskSection";
+import OngoingTaskSection from "../../Components/Shared/TaskCategorySection/OngoingTaskSection";
 import ToDoSection from "../../Components/Shared/TaskCategorySection/ToDoSection";
 
 
@@ -7,8 +9,12 @@ return(
         <div className="col-span-4">
             <ToDoSection/>
         </div>
-        <div className="col-span-4">On Going</div>
-        <div className="col-span-4">Completed</div>
+        <div className="col-span-4">
+            <OngoingTaskSection/>
+        </div>
+        <div className="col-span-4">
+            <CompletedTaskSection/>
+        </div>
     </div>
 )}
 export default AllTask;
