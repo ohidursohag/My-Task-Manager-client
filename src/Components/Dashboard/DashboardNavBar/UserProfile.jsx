@@ -3,7 +3,7 @@ import avaterPlaceHolder from '../../../assets/Images/Avater.jpg'
 
 const UserProfile = () => {
    const { currentUser } = useGetCurrentUser()
-   console.log(currentUser);
+   // console.log(currentUser);
 return(
    <div className="flex items-center gap-2">
       

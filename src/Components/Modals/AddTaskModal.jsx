@@ -14,7 +14,7 @@ const AddTaskModal = ({ isShowModal, setIsShowModal }) => {
    const { register, handleSubmit, formState: { errors }, reset } = useForm()
    const refWraper = useClickOutSide(setIsShowModal)
    const currentDate = moment().format('Y-D-MTHH:mm');
-   console.log(currentDate);
+   // console.log(currentDate);
 
    const closeModal = () => {
       setIsShowModal(false);

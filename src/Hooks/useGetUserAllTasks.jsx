@@ -6,10 +6,10 @@ import { userAllTasks } from "../Api/task";
 const useGetUserAllTasks = ({taskStatus=''}) => {
    const { user } = useAuth();
    const email = user?.email;
-   const { data: userTasks, refatch:userTaskRefetch, isLoading:userTaskIsLoading } = useQuery({
-      queryKey: ['userTasks'],
+   const { data: userTasks, isLoading: userTaskIsLoading,refetch} = useQuery({
+      queryKey: ['user_Tasks', user?.email, taskStatus],
       queryFn: async () => await userAllTasks({email,taskStatus})
    })
-   return { userTasks, userTaskRefetch, userTaskIsLoading }
+   return { userTasks, userTaskIsLoading, refetch }
 }
 export default useGetUserAllTasks;
