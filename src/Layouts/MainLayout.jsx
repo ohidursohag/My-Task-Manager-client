@@ -7,7 +7,7 @@ import LoadingAnimation from "../Components/Shared/LoadingAnimation/LoadingAnima
 const MainLayout = () => {
     const navigation = useNavigation()
 return(
-   <div className="">
+   <div className="scroll-smooth">
         <NavBar />
         {
             navigation.state === 'loading' ? <LoadingAnimation /> : <Outlet />

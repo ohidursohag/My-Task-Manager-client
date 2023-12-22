@@ -1,15 +1,20 @@
-import { NavLink } from "react-router-dom";
+
 import useAuth from "../../../Hooks/useAuth";
 import { Link } from "react-router-dom";
 
+import { useLocation } from "react-router-dom";
+
 
 const NavLinks = () => {
-   const { user, loading } = useAuth()
+   const { user, loading } = useAuth();
+  
+   const loc = useLocation();
+   console.log(loc.hash);
 return(
    <>
-      <NavLink to='/' className={({ isActive }) => isActive ? 'text-secondary' : 'text-gray-500'}>Home</NavLink>
-      <NavLink to='/' className={({ isActive }) => isActive ? 'text-secondary' : 'text-gray-500'}>About</NavLink>
-      <NavLink to='/' className={({ isActive }) => isActive ? 'text-secondary' : 'text-gray-500'}>Contact Us</NavLink>
+      <a href='#home' className={`${loc.hash === '#home' ? 'text-secondary scroll-smooth' : 'text-gray-500 scroll-smooth'}`}>Home</a>
+      <a href='#about' className={`${loc.hash === '#about' ? 'text-secondary scroll-smooth' : 'text-gray-500 scroll-smooth'}`}>About</a>
+      <a href='#contact' className={`${loc.hash === '#contact' ? 'text-secondary scroll-smooth' : 'text-gray-500 scroll-smooth'}`}>Contact Us</a>
       {
          !user?.email && !loading
             ?
