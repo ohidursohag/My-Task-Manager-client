@@ -8,10 +8,12 @@ import toast from "react-hot-toast";
 import moment from 'moment';
 import { addNewTask } from "../../Api/task";
 import useAuth from "../../Hooks/useAuth";
+import useGetUserAllTasks from "../../Hooks/useGetUserAllTasks";
 const AddTaskModal = ({ isShowModal, setIsShowModal }) => {
    AOS.init();
    const {user} = useAuth()
-   const { register, handleSubmit, formState: { errors }, reset } = useForm()
+   const { register, handleSubmit, formState: { errors }, reset } = useForm();
+   const {refetch:refetchUseeTask } = useGetUserAllTasks({ taskStatus:'to-do' })
    const refWraper = useClickOutSide(setIsShowModal)
    const currentDate = moment().format('Y-D-MTHH:mm');
    // console.log(currentDate);
@@ -40,6 +42,7 @@ const AddTaskModal = ({ isShowModal, setIsShowModal }) => {
          if (response.acknowledged) {
             toast.success('Task successfully Added', { id: toastId });
             closeModal();
+            refetchUseeTask()
             reset()
          } else {
             toast.error('Something went wrong', { id: toastId })
@@ -53,13 +56,13 @@ const AddTaskModal = ({ isShowModal, setIsShowModal }) => {
       <>
          {
             isShowModal ? (
-               <div className='bg-black/40 backdrop-blur-[4px] w-full h-full top-0 left-0 fixed flex justify-center items-center'>
+               <div className='bg-black/40 backdrop-blur-[4px] w-full h-full top-0 left-0 fixed flex justify-center items-center overflow-auto'>
                   <div
                      ref={refWraper}
                      data-aos="zoom-out"
                      data-aos-anchor-placement="center-bottom"
                      data-aos-duration="1000"
-                     className="bg-secondary/50 rounded-xl p-5 backdrop-blur mx-2">
+                     className="bg-secondary/50 rounded-xl p-5 backdrop-blur mx-2 my-5">
                      <div className=" flex flex-col gap-4 m-4 ">
                         <h1 className="text-3xl text-center  font-bold">Add New Task</h1>
 

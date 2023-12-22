@@ -7,7 +7,7 @@ const UserProfile = () => {
 return(
    <div className="flex items-center gap-2">
       
-      <div className="text-sm font-normal text-right">
+      <div className="text-sm font-normal text-right hidden sm:block">
          <div className="text-primary">{currentUser?.name}</div>
          <div>{currentUser?.email}</div>
       </div>

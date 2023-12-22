@@ -64,32 +64,32 @@ const TaskDisplayCard = ({ task }) => {
     }
     return (
         <div className="shadow-[rgba(50,50,93,0.25)_0px_50px_100px_-20px,rgba(0,0,0,0.3)_0px_30px_60px_-30px,rgba(10,37,64,0.35)_0px_-2px_6px_0px] p-5 mb-5 rounded-lg flex flex-col">
-            <div className="grid grid-cols-5 my-3 gap-5">
+            <div className="flex justify-between items-center  gap-5">
                 <div className="flex  items-center justify-start gap-2 col-span-4">
-                    <span>
+                    <span className='flex-1'>
                         <TbArrowBadgeRightFilled size={35} className={`  ${task?.taskStatus === 'to-do' ? 'text-accent' : task?.taskStatus === 'ongoing' ? 'text-primary' : 'text-secondary'}`} />
                     </span>
-                    <span className="text-xl font-bold text-wrap">{task?.taskTitle}</span>
+                    <span className="xl:text-xl font-bold text-wrap">{task?.taskTitle}</span>
                 </div>
-                <div className="flex items-center justify-end gap-5">
+                <div className="flex items-center justify-end gap-3 xl:gap-5">
                     <button onClick={() => {
                         setCurrentTaskData(task);
                         setIsShowModal(true)
                     }}>
-                        <FaEdit size={35} className="text-primary" /></button>
-                    <button onClick={() => handleRemoveTask(task?._id)}><MdDelete size={35} className="text-error" /></button>
+                        <FaEdit  className="text-primary text-2xl xl:text-3xl" /></button>
+                    <button onClick={() => handleRemoveTask(task?._id)}><MdDelete  className="text-error text-2xl xl:text-3xl" /></button>
                 </div>
             </div>
            
-            <div className="text-neutral text-justify flex-1">{task?.taskDescription}</div>
+            <div className="text-neutral text-justify flex-1 my-2">{task?.taskDescription}</div>
             <div className='flex items-center gap-2'>
-                <div className='flex items-center gap-2 text-warning font-bold my-2'>
+                <div className='flex items-center gap-2 text-warning font-bold my-3'>
                     <span><RiTimerFill size={25}/></span>
                     <span>DeadLine: </span>
                 </div>
                 <div className='text-sm text-neutral'>{dedline}</div>
             </div>
-            <div className='flex justify-between items-center'>
+            <div className='flex justify-between items-center my-2'>
                 <div className={`border-2 w-max px-2  py-1 font-bold rounded-lg ${task?.taskStatus === 'to-do' ? 'text-warning border-warning' : task?.taskStatus === 'ongoing' ? 'text-primary border-primary' : 'text-secondary border-secondary'}`}> {task?.taskPriority}</div>
                 
                 <button

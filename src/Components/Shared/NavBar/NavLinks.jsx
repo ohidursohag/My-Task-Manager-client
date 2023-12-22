@@ -13,7 +13,7 @@ return(
       {
          !user?.email && !loading
             ?
-            <Link to='/login' className='inline-block text-base text-white px-4 py-2 mt-3 rounded bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary  transition-[colors] duration-500'>Sign In</Link>
+            <Link to='/login' className='hidden sm:inline-block text-base text-white px-4 py-2 mt-3 rounded bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary  transition-[colors] duration-500'>Sign In</Link>
             : ''
       }
    </>

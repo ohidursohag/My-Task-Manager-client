@@ -7,7 +7,7 @@ return(
    <div className="fixed w-full py-2">
       <div className="container mx-auto flex justify-between items-center px-2">
          <Logo />
-         <div className="flex items-center gap-10 text-lg font-bold">
+         <div className="flex items-center gap-3 md:gap-10 md:text-lg font-bold">
             <NavLinks />
          </div>
       </div>

@@ -22,7 +22,7 @@ const Banner = () => {
                   Task management is the link between planning to do something and getting it done. Your task management software should provide an overview of work in progress that enables tracking from conception to completion.
                </p>
             </div>
-            <Link to={user?.email ? '/dashboard' : '/login'} className='inline-block text-lg text-white px-4 py-2 mt-3 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary hover:scale-105 transition-[colors] duration-500 '>{`${!user?.email && !loading ? "Let's Explore" :"My Tasks"}`}</Link>
+            <Link to={user?.email ? '/dashboard/all-tasks' : '/login'} className='inline-block text-lg text-white px-4 py-2 mt-3 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary hover:scale-105 transition-[colors] duration-500 '>{`${!user?.email && !loading ? "Let's Explore" :"My Tasks"}`}</Link>
          </div>
       </div>
    )

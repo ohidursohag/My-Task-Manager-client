@@ -49,7 +49,7 @@ const Register = () => {
             const data = await saveUserData(user)
             console.log(data);
             toast.success('Registration Successfull and Logged In', { id: toastId })
-            navigate(loc?.state ? loc.state : '/dashboard', { replace: true })
+            navigate(loc?.state ? loc.state : '/dashboard/all-tasks', { replace: true })
          } else {
             logOut()
          }
@@ -71,7 +71,7 @@ const Register = () => {
             const data = await saveUserData(user)
             console.log(data);
             toast.success('Successfully Registered', { id: toastId })
-            navigate(loc?.state ? loc.state : '/dashboard', { replace: true })
+            navigate(loc?.state ? loc.state : '/dashboard/all-tasks', { replace: true })
 
          } else {
             logOut()

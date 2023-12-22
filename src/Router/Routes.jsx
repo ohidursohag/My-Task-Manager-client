@@ -8,6 +8,9 @@ import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import TodayTask from "../Page/Dashboard/TodayTask";
 import AllTask from "../Page/Dashboard/AllTask";
+import ToDoSmallDevice from "../Page/Dashboard/ToDoSmallDevice";
+import OngoingSmallDevice from "../Page/Dashboard/OngoingSmallDevice";
+import CompletedSmallDevice from "../Page/Dashboard/CompletedSmallDevice";
 
 const myCreatedRoutes = createBrowserRouter([
    {
@@ -32,7 +35,18 @@ const myCreatedRoutes = createBrowserRouter([
             path: 'all-tasks',
             element: <AllTask/>
          },
-
+         {
+            path: 'to-do-tasks',
+            element: <ToDoSmallDevice/>
+         },
+         {
+            path: 'ongoing-tasks',
+            element: <OngoingSmallDevice/>
+         },
+         {
+            path: 'completed-tasks',
+            element: <CompletedSmallDevice/>
+         },
       ]
    },
 ])
